@@ -14,3 +14,7 @@ typedef enum {
 }error_t;
 
 void printError(std::string label, error_t __e);
+// Prints all the relevant errors in accordance with their error codes
+
+void print_help(void);
+// Prints the help menu
