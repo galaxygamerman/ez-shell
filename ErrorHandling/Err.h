@@ -10,6 +10,8 @@ typedef enum {
     DIR_EXISTS_ERROR,
     INVALID_DIR_NAME_ERROR,
     MKDIR_FAILED,
+    RMDIR_FAILED,
+    RMDIR_ITEM_FAILED,
     UNKNOWN
     // Additional error codes to be added
 }error_t;

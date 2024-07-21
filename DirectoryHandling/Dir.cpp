@@ -31,12 +31,12 @@ void lsDir(const std::filesystem::path& path) {
 }
 void mkDir(const std::filesystem::path& path) {
     if (std::filesystem::exists(path)) {
-        printError("Directory already exists", DIR_EXISTS_ERROR);
+        printError("mkdir", DIR_EXISTS_ERROR);
         return;
     }
 
     if (path.filename().string().empty()) {
-        printError("Invalid directory name", INVALID_DIR_NAME_ERROR);
+        printError("mkdir", INVALID_DIR_NAME_ERROR);
         return;
     }
 
@@ -44,7 +44,7 @@ void mkDir(const std::filesystem::path& path) {
         std::filesystem::create_directory(path);
     }
     catch (const std::filesystem::filesystem_error& e) {
-        printError("Failed to create directory", MKDIR_FAILED);
+        printError("mkdir", MKDIR_FAILED);
         return;
     }
 
@@ -52,12 +52,12 @@ void mkDir(const std::filesystem::path& path) {
 }
 bool rmDir(const std::filesystem::path& path) {
     if (!std::filesystem::exists(path)) {
-        std::cerr << "Error: Directory '" << path << "' does not exist." << std::endl;
+        printError("rmdir", DIR_NOT_EXISTANT);
         return false;
     }
 
     if (!std::filesystem::is_directory(path)) {
-        std::cerr << "Error: '" << path << "' is not a directory." << std::endl;
+        printError("rmdir", NOT_DIR_ERROR);
         return false;
     }
 
@@ -68,14 +68,14 @@ bool rmDir(const std::filesystem::path& path) {
             }
         } else {
             if (!std::filesystem::remove(entry.path())) {
-                std::cerr << "Error: Unable to delete file '" << entry.path() << "'." << std::endl;
+                printError("rmdir", RMDIR_ITEM_FAILED);
                 return false;
             }
         }
     }
 
     if (!std::filesystem::remove(path)) {
-        std::cerr << "Error: Unable to delete directory '" << path << "'." << std::endl;
+        printError("rmdir", MKDIR_FAILED);
         return false;
     }
 

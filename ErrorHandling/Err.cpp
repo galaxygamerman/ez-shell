@@ -31,14 +31,19 @@ void printError(std::string label, error_t __e) {
         std::cout << "Invalid directory name. Directory name must follow rules of your OS.";
         break;
     case MKDIR_FAILED:
-        std::cout << "mkdir failed. Check permissions.";
+        std::cout << "Can't make directory. Check permissions.";
+        break;
+    case RMDIR_FAILED:
+        std::cout << "Can't delete directory. Check permissions.";
+        break;
+    case RMDIR_ITEM_FAILED:
+        std::cout << "Can't delete item in directory. Check permissions.";
         break;
     default:
         std::cout << "Something unexpected has happened."
             << "Please report this to the developer.";
     }
     std::cout << std::endl;
-    // Additional plans exist to add an if-else structure under here
 }
 void print_help(void) {
     std::cout << "ez - Easy File System Tool\n\n"
