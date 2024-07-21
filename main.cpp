@@ -41,8 +41,8 @@ int main(int argc, char* argv[]) {
 
     std::filesystem::path path;
     try {
-        if (argc < 3 && choice == MAKE_DIRECTORY) throw NO_PATH_MKDIR_ERROR; //throw "Path was not specified. mkdir unsuccessful.";
-        if (argc < 3) throw NO_PATH_CWD; //throw "Path was not specified. Set to Current Working Directory";
+        if (argc < 3 && choice == MAKE_DIRECTORY) throw NO_PATH_MKDIR_ERROR;
+        if (argc < 3) throw NO_PATH_CWD;
         path = argv[2];
     }
     catch (const error_t& e) {

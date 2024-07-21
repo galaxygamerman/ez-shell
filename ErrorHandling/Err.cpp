@@ -3,7 +3,41 @@
 #include "Err.h"
 
 void printError(std::string label, error_t __e) {
-    std::cerr << label << ": " << __e << std::endl;
+    std::cerr << label << ": ";
+    switch (__e) {
+    case USAGE_ERROR:
+        std::cout << '\r';
+        print_help();
+        break;
+    case CMD_ERROR:
+        std::cout << "That is not a command";
+        break;
+    case NO_PATH_MKDIR_ERROR:
+        std::cout << "Path was not specified. mkdir unsuccessful.";
+        break;
+    case NO_PATH_CWD:
+        std::cout << "Path was not specified. Set to Current Working Directory.";
+        break;
+    case DIR_NOT_EXISTANT:
+        std::cout << "Directory does not exist at specified path.";
+        break;
+    case NOT_DIR_ERROR:
+        std::cout << "Specified path is not a directory.";
+        break;
+    case DIR_EXISTS_ERROR:
+        std::cout << "Directory already exists at specified path.";
+        break;
+    case INVALID_DIR_NAME_ERROR:
+        std::cout << "Invalid directory name. Directory name must follow rules of your OS.";
+        break;
+    case MKDIR_FAILED:
+        std::cout << "mkdir failed. Check permissions.";
+        break;
+    default:
+        std::cout << "Something unexpected has happened."
+            << "Please report this to the developer.";
+    }
+    std::cout << std::endl;
     // Additional plans exist to add an if-else structure under here
 }
 void print_help(void) {
