@@ -8,6 +8,7 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 "${workspaceFolder}\\main.cpp",
+                "${workspaceFolder}\\Commands\\*.cpp",
                 "${workspaceFolder}\\DirectoryHandling\\*.cpp",
                 "${workspaceFolder}\\ErrorHandling\\*.cpp",
                 "-o",

@@ -13,7 +13,7 @@ void printError(std::string label, error_t __e) {
         std::cout << "That is not a command";
         break;
     case NO_PATH_MKDIR_ERROR:
-        std::cout << "Path was not specified. mkdir unsuccessful.";
+        std::cout << "Path was not specified. Set to tempDir.";
         break;
     case NO_PATH_CWD:
         std::cout << "Path was not specified. Set to Current Working Directory.";
