@@ -79,5 +79,6 @@ bool rmDir(const std::filesystem::path& path) {
         return false;
     }
 
+    std::cout << "Directory deleted successfully: " << path.string() << std::endl;
     return true;
 }

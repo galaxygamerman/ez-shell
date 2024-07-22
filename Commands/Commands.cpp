@@ -28,7 +28,7 @@ std::filesystem::path parsePath(int& choice, int& __arg1, char* __arg2[]) {
         return __arg2[2];
     }
     catch (const error_t& e) {
-        printError("Omission", e);
+        if (choice != GET_CWD) printError("Omission", e);
         if (e == NO_PATH_MKDIR_ERROR) return "tempDir";
         return ".";
     }
